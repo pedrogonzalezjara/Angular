@@ -1,11 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { ServicioService } from './servicios/servicio.service';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { HttpClient } from './httpclient/http.client';
 
 
 @NgModule({
@@ -14,10 +12,11 @@ import { HttpModule } from '@angular/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     HttpModule
   ],
   providers: [
+    HttpClient,
+    ServicioService
   ],
   bootstrap: [AppComponent]
 })

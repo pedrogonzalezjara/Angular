@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { ServicioService } from './servicios/servicio.service';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +9,12 @@ import { Http, Headers } from '@angular/http';
 export class AppComponent {
 
   private host: string;
-  constructor(private httpClient: Http) {
+  constructor(private servicio: ServicioService) {
     this.pruebaServicio();
   }
 
-  createAuthorizationHeader(headers: Headers) {
-    headers.append('Content-Type', 'application/json');
-  }
-
   pruebaServicio() {
-    let headers = new Headers();
-    this.createAuthorizationHeader(headers);
-    this.httpClient.get(this.host, { headers: headers }).subscribe(
+    this.servicio.obtenerDatos().subscribe(
       result => {
         console.log(result);
       },
